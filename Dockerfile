@@ -7,6 +7,8 @@ RUN npm install
 
 COPY . .
 RUN npm run build
+RUN ls -la public/build
+RUN ls -la public/build/assets
 
 
 FROM php:8.2-apache
@@ -23,10 +25,11 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 COPY . .
-COPY --from=assets /app/public/build ./public/build
+
+COPY --from=assets /app/public/build /var/www/html/public/build
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
-    && chown -R www-data:www-data storage bootstrap/cache
+    && chown -R www-data:www-data storage bootstrap/cache public/build
 
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/start.sh /usr/local/bin/start.sh
