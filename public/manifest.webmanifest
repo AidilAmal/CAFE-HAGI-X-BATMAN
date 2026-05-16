@@ -1,0 +1,21 @@
+{
+  "name": "Cafe Hagi X Batman Pools",
+  "short_name": "Cafe Hagi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0a09",
+  "theme_color": "#1c1917",
+  "description": "Sistem stok barang dan monitoring menu cafe berbasis web yang installable.",
+  "icons": [
+    {
+      "src": "/assets/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
