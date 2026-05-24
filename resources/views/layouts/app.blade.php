@@ -18,6 +18,7 @@
             </div>
             <nav class="space-y-2 text-sm">
                 <a href="{{ route('dashboard') }}" class="block rounded-2xl px-4 py-3 hover:bg-white/10">Dashboard</a>
+                <a href="{{ route('ai.dashboard') }}" class="block rounded-2xl px-4 py-3 hover:bg-white/10">AI Dashboard</a>
                 <a href="{{ route('items.index') }}" class="block rounded-2xl px-4 py-3 hover:bg-white/10">Barang</a>
                 <a href="{{ route('categories.index') }}" class="block rounded-2xl px-4 py-3 hover:bg-white/10">Kategori Barang</a>
                 <a href="{{ route('suppliers.index') }}" class="block rounded-2xl px-4 py-3 hover:bg-white/10">Supplier</a>
@@ -57,6 +58,7 @@
                 <div id="mobile-admin-nav" class="hidden border-t border-stone-200 px-4 py-4 dark:border-stone-800 md:hidden">
                     <div class="grid gap-2">
                         <a href="{{ route('dashboard') }}" class="rounded-2xl px-4 py-3 hover:bg-stone-100 dark:hover:bg-stone-900">Dashboard</a>
+                        <a href="{{ route('ai.dashboard') }}" class="rounded-2xl px-4 py-3 hover:bg-stone-100 dark:hover:bg-stone-900">AI Dashboard</a>
                         <a href="{{ route('items.index') }}" class="rounded-2xl px-4 py-3 hover:bg-stone-100 dark:hover:bg-stone-900">Barang</a>
                         <a href="{{ route('categories.index') }}" class="rounded-2xl px-4 py-3 hover:bg-stone-100 dark:hover:bg-stone-900">Kategori Barang</a>
                         <a href="{{ route('suppliers.index') }}" class="rounded-2xl px-4 py-3 hover:bg-stone-100 dark:hover:bg-stone-900">Supplier</a>

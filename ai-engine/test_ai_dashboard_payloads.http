@@ -1,0 +1,14 @@
+### Health Check
+GET http://127.0.0.1:8001/health
+
+### Full AI Dashboard Payload
+GET http://127.0.0.1:8001/insights/dashboard?default_stock=80&forecast_days=30
+
+### K-Means Menu Clustering
+GET http://127.0.0.1:8001/insights/menu-clusters
+
+### Smart Promo ML Recommendations
+GET http://127.0.0.1:8001/insights/smart-promos?limit=8
+
+### Peak Hour Analyzer
+GET http://127.0.0.1:8001/insights/peak-hours

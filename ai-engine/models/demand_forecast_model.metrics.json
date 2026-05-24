@@ -1,0 +1,93 @@
+{
+  "model_path": "C:\\pindahan dari laptop lama\\cafe-hagi-final\\ai-engine\\models\\demand_forecast_model.joblib",
+  "source_csv": "C:\\pindahan dari laptop lama\\cafe-hagi-final\\tools\\synthetic-data\\synthetic_output\\sales_history_ml.csv",
+  "raw_completed_rows": 4750,
+  "daily_menu_rows": 1800,
+  "train_rows": 1440,
+  "test_rows": 360,
+  "mae": 1.7707,
+  "rmse": 2.7601,
+  "r2": 0.6817,
+  "menu_catalog": [
+    {
+      "menu_id": 1,
+      "menu_name": "Es Kopi Susu",
+      "menu_category": "Coffee",
+      "is_coffee_based": 1,
+      "menu_segment": "bestseller",
+      "unit_price": 22000
+    },
+    {
+      "menu_id": 2,
+      "menu_name": "Americano",
+      "menu_category": "Coffee",
+      "is_coffee_based": 1,
+      "menu_segment": "bestseller",
+      "unit_price": 18000
+    },
+    {
+      "menu_id": 3,
+      "menu_name": "Matcha Latte",
+      "menu_category": "Non Coffee",
+      "is_coffee_based": 0,
+      "menu_segment": "bestseller",
+      "unit_price": 25000
+    },
+    {
+      "menu_id": 4,
+      "menu_name": "Burger Beef",
+      "menu_category": "Main Course",
+      "is_coffee_based": 0,
+      "menu_segment": "normal",
+      "unit_price": 32000
+    },
+    {
+      "menu_id": 5,
+      "menu_name": "Cappuccino",
+      "menu_category": "Coffee",
+      "is_coffee_based": 1,
+      "menu_segment": "normal",
+      "unit_price": 24000
+    },
+    {
+      "menu_id": 6,
+      "menu_name": "Caramel Macchiato",
+      "menu_category": "Coffee",
+      "is_coffee_based": 1,
+      "menu_segment": "normal",
+      "unit_price": 28000
+    },
+    {
+      "menu_id": 7,
+      "menu_name": "Chicken Rice Bowl",
+      "menu_category": "Main Course",
+      "is_coffee_based": 0,
+      "menu_segment": "normal",
+      "unit_price": 35000
+    },
+    {
+      "menu_id": 8,
+      "menu_name": "Chocolate Croissant",
+      "menu_category": "Main Course",
+      "is_coffee_based": 0,
+      "menu_segment": "normal",
+      "unit_price": 21000
+    },
+    {
+      "menu_id": 9,
+      "menu_name": "Manual Brew V60",
+      "menu_category": "Coffee",
+      "is_coffee_based": 1,
+      "menu_segment": "dead_stock",
+      "unit_price": 30000
+    },
+    {
+      "menu_id": 10,
+      "menu_name": "Lemon Tea",
+      "menu_category": "Non Coffee",
+      "is_coffee_based": 0,
+      "menu_segment": "dead_stock",
+      "unit_price": 17000
+    }
+  ]
+}

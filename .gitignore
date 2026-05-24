@@ -1,31 +1,62 @@
-*.log
-.DS_Store
+# Environment files
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
-/auth.json
+auth.json
+
+# Logs
+*.log
+/storage/logs/*
+
+# Laravel generated/cache files
+/storage/*.key
+/storage/pail
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/bootstrap/cache/*.php
+
+# PHP dependencies
+/vendor
+
+# Node dependencies and build output
 /node_modules
 /public/build
 /public/hot
 /public/storage
-/storage/*.key
-/storage/pail
-/vendor
-Homestead.json
-Homestead.yaml
+
+# Python / FastAPI / ML
+.venv/
+ai-engine/.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# ML model artifacts
+ai-engine/models/*.joblib
+ai-engine/models/*.pkl
+
+# Synthetic generated CSV output
+tools/synthetic-data/synthetic_output/
+
+# Test/cache files
+.phpactor.json
+.phpunit.result.cache
+/.phpunit.cache
+
+# IDE/editor folders
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# OS files
+.DS_Store
 Thumbs.db
 
-.env
-/vendor
-/node_modules
-/public/hot
-/public/storage
-/storage/logs/*
+# Homestead
+Homestead.json
+Homestead.yaml

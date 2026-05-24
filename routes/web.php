@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AiDashboardController;
+use App\Http\Controllers\AiPredictionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -28,6 +30,7 @@ Route::get('/about', [PublicMenuController::class, 'about'])->name('about');
 
 Route::middleware(['auth', 'role:admin,owner'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/ai-dashboard', [AiDashboardController::class, 'index'])->name('ai.dashboard');
     Route::get('/stock/history', [StockController::class, 'history'])->name('stock.history');
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('/reports/pdf', [ReportController::class, 'exportPdf'])->name('reports.pdf');
@@ -42,6 +45,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('items', ItemController::class)->except('show');
     Route::resource('menu-categories', MenuCategoryController::class)->except('show');
     Route::resource('menus', MenuController::class)->except('show');
+
+    Route::post('/menus/{menu}/ai/stock-out', [AiPredictionController::class, 'stockOut'])
+        ->name('menus.ai.stock-out');
 
     Route::patch('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.update-status');
 

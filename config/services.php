@@ -33,6 +33,11 @@ return [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
+    
+    'ai_engine' => [
+        'url' => env('AI_ENGINE_URL', 'http://127.0.0.1:8001'),
+        'timeout' => env('AI_ENGINE_TIMEOUT', 10),
+        ],
     ],
 
 ];
