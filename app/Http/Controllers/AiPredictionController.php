@@ -31,11 +31,11 @@ class AiPredictionController extends Controller
         ];
 
         try {
-            $response = Http::connectTimeout(3)
-                ->timeout(config('services.ai_engine.timeout', 10))
+            $response = Http::connectTimeout(10)
+                ->timeout($this->aiEngineTimeout())
                 ->acceptJson()
                 ->asJson()
-                ->post(rtrim(config('services.ai_engine.url', 'http://127.0.0.1:8001'), '/') . '/predict/stock-out', $payload);
+                ->post($this->aiEngineUrl('/predict/stock-out'), $payload);
 
             if (! $response->successful()) {
                 Log::warning('AI stock-out prediction failed', [
@@ -54,7 +54,7 @@ class AiPredictionController extends Controller
                 'payload' => $payload,
             ]);
 
-            return back()->with('error', 'Tidak bisa terhubung ke AI Engine. Pastikan FastAPI berjalan di port 8001.');
+           return back()->with('error', 'Tidak bisa terhubung ke AI Engine. Pastikan AI Engine production sedang aktif.');
         }
     }
 
@@ -132,5 +132,23 @@ class AiPredictionController extends Controller
         }
 
         return false;
+    }
+
+    private function aiEngineUrl(string $path = ''): string
+    {
+        $baseUrl = $_SERVER['AI_ENGINE_URL']
+            ?? getenv('AI_ENGINE_URL')
+            ?: config('services.ai_engine.url', 'http://127.0.0.1:8001');
+
+        return rtrim($baseUrl, '/') . '/' . ltrim($path, '/');
+    }
+
+    private function aiEngineTimeout(): int
+    {
+        return (int) (
+            $_SERVER['AI_ENGINE_TIMEOUT']
+            ?? getenv('AI_ENGINE_TIMEOUT')
+            ?: config('services.ai_engine.timeout', 30)
+        );
     }
 }

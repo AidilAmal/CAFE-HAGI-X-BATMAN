@@ -21,10 +21,10 @@ class AiDashboardController extends Controller
         $errorMessage = null;
 
         try {
-            $response = Http::connectTimeout(3)
-                ->timeout(config('services.ai_engine.timeout', 10))
+            $response = Http::connectTimeout(10)
+                ->timeout($this->aiEngineTimeout())
                 ->acceptJson()
-                ->get(rtrim(config('services.ai_engine.url', 'http://127.0.0.1:8001'), '/') . '/insights/dashboard', [
+                ->get($this->aiEngineUrl('/insights/dashboard'), [
                     'default_stock' => $defaultStock,
                     'forecast_days' => $forecastDays,
                 ]);
@@ -43,7 +43,7 @@ class AiDashboardController extends Controller
             }
         } catch (\Throwable $e) {
             $dashboard = $fallback;
-            $errorMessage = 'Tidak bisa terhubung ke AI Engine. Pastikan FastAPI berjalan di port 8001.';
+            $errorMessage = 'Tidak bisa terhubung ke AI Engine. Pastikan AI Engine production sedang aktif.';
 
             Log::error('AI dashboard connection error', [
                 'message' => $e->getMessage(),
@@ -57,6 +57,24 @@ class AiDashboardController extends Controller
             'defaultStock' => $defaultStock,
             'forecastDays' => $forecastDays,
         ]);
+    }
+
+    private function aiEngineUrl(string $path = ''): string
+    {
+        $baseUrl = $_SERVER['AI_ENGINE_URL']
+            ?? getenv('AI_ENGINE_URL')
+            ?: config('services.ai_engine.url', 'http://127.0.0.1:8001');
+
+        return rtrim($baseUrl, '/') . '/' . ltrim($path, '/');
+    }
+
+    private function aiEngineTimeout(): int
+    {
+        return (int) (
+            $_SERVER['AI_ENGINE_TIMEOUT']
+            ?? getenv('AI_ENGINE_TIMEOUT')
+            ?: config('services.ai_engine.timeout', 30)
+        );
     }
 
     private function fallbackDashboard(): array
