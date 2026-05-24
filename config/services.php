@@ -36,7 +36,7 @@ return [
     
     'ai_engine' => [
         'url' => env('AI_ENGINE_URL', 'http://127.0.0.1:8001'),
-        'timeout' => env('AI_ENGINE_TIMEOUT', 10),
+        'timeout' => env('AI_ENGINE_TIMEOUT', 30),
         ],
     ],
 
